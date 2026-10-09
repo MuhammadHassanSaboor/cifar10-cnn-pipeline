@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.dvc/cache
+.dvc/tmp
+*.pth
+*.h5
+.env
