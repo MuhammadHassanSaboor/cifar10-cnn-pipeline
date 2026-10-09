@@ -1,4 +1,5 @@
 import os
+torch.set_num_threads(os.cpu_count())
 import numpy as np
 import pandas as pd
 import torch
@@ -44,8 +45,8 @@ def main():
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print("Training on", device)
 
-    train_dl = DataLoader(load("train"), batch_size=p["batch_size"], shuffle=True)
-    val_dl = DataLoader(load("val"), batch_size=p["batch_size"])
+    train_dl = DataLoader(load("train"), batch_size=p["batch_size"], shuffle=True, num_workers=2, persistent_workers=True)
+    val_dl = DataLoader(load("val"), batch_size=p["batch_size"], num_workers=2)
 
     model = CNN(p["num_filters"], p["dropout_rate"]).to(device)
     opt = torch.optim.Adam(model.parameters(), lr=p["learning_rate"])
