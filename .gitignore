@@ -1,3 +1,4 @@
+data/download/
 __pycache__/
 *.pyc
 .dvc/cache
@@ -5,3 +6,4 @@ __pycache__/
 *.pth
 *.h5
 .env
+/models
